@@ -9,7 +9,7 @@ python3 predict.py --image "dataset/raw/Jefferson Nickels, 1938-Date/Jefferson N
 
 ## O dataset completo não está incluído no repositório por causa do tamanho.
 
-Após baixar o dataset, organize assim:
+Após baixar o dataset no link: https://www.kaggle.com/datasets/sergiosaharovskiy/uscoins, organize assim:
 
 dataset/raw/
   1_euro/
