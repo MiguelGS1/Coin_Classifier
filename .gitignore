@@ -1,0 +1,10 @@
+# Ignora tudo
+*
+
+# Mas mantém arquivos Python, Markdown e TXT da raiz
+!/*.py
+!/*.md
+!/*.txt
+
+# Mantém o próprio .gitignore
+!/.gitignore
