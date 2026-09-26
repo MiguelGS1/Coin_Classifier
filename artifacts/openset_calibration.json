@@ -1,9 +1,0 @@
-{
-  "softmax_threshold": 0.5423434376716614,
-  "distance_threshold": 5.020808219909668,
-  "unknown_weight_softmax": 0.6,
-  "unknown_weight_distance": 0.4,
-  "min_unknown_prob": 0.0,
-  "max_unknown_prob": 0.95,
-  "unknown_class_name": "outra_moeda"
-}
