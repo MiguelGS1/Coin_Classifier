@@ -11,10 +11,16 @@ Ou baixe o .zip pelo GitHub e abra a pasta do projeto no terminal.
 
 ## 2. Criar e ativar o ambiente virtual
 python3 -m venv .venv
+no windows: python -m venv .venv
+
 source .venv/bin/activate
+no windows: .venv\Scripts\Activate.ps1
 ## 3. Instalar as dependências
 pip install --upgrade pip
 pip install -r requirements.txt
+No windows: 
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ## 4. Baixar e organizar o dataset
 
 O dataset completo não está incluído no repositório por causa do tamanho.
@@ -43,7 +49,8 @@ Cada pasta representa uma classe de moeda.
 Depois de organizar o dataset, rode:
 
 python3 train.py
-
+No windows:
+python train.py
 Ao final do treinamento, será criada a pasta artifacts/, contendo o modelo treinado e os arquivos necessários para fazer previsões.
 
 ## 6. Testar uma imagem
