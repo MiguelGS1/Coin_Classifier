@@ -1,0 +1,16 @@
+{
+  "classes": {
+    "1_real_brasil": [
+      "1_real_brasil_2019.png"
+    ],
+    "1_euro": [
+      "1_euro_vitruvian.png",
+      "1_euro_mapa.png"
+    ]
+  },
+  "notes": [
+    "Estas imagens foram adicionadas conforme os testes pedidos na conversa.",
+    "Para usar o modelo, rode novamente python train.py após adicionar novas imagens.",
+    "Com tão poucas imagens, os resultados servem mais para teste de pipeline do que para avaliação confiável."
+  ]
+}
