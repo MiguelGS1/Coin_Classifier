@@ -9,3 +9,5 @@ dataset/
 artifacts/
 TESTES/
 artifacts_*/
+train_augmentation.py
+check_leakage.py
