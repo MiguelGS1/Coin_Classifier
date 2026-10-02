@@ -11,3 +11,12 @@ TESTES/
 artifacts_*/
 train_augmentation.py
 check_leakage.py
+
+make_outra_moeda.py 
+crop_coins.py
+train_outra_moeda.py
+auroc_justo.py
+testeExperimentoE/
+
+gradcam.py
+find_examples.py
