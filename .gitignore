@@ -20,3 +20,11 @@ testeExperimentoE/
 
 gradcam.py
 find_examples.py
+# Scripts novos que não são mais usados
+resultado_series_corrigido.py
+analisar_grupos_teste.py
+validacao_cruzada_origens.py
+validacao_cruzada_origens_v1.py
+make_group_split_old.py
+conferir_series_washington.py
+validacao_sem_duplicatas.py
