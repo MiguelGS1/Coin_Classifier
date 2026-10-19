@@ -31,3 +31,12 @@ validacao_sem_duplicatas.py
 antigos/
 
 modelos_finais.zip
+folhas_por_serie.zip
+erros_s42.zip
+
+folhas_por_serie.zip
+gradcam_erros.zip
+train_group_split_profundo_bb_cutout_v3.py
+
+artifactsAntigo/
+*.zip
