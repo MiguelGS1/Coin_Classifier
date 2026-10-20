@@ -91,7 +91,7 @@ o mesmo conjunto a partir da fonte original.
 - Python 3.14.3, Windows 11, sem GPU.
 - TensorFlow 2.22.0rc0 e Keras 3.16 (`keras-nightly`), ambos versões de pré-lançamento.
 - numpy, Pillow, matplotlib e **opencv-python** (necessário para a configuração com recorte).
-- Lista completa de versões: `artifacts/protocolo_congelado/pacotes_ambiente.txt`.
+- Lista completa de versões: `pacotes_ambiente.txt`.
 
 > **Importante:** nesta versão do TensorFlow, as otimizações oneDNN deixam a inferência cerca de 100 vezes mais lenta
 > neste processador (as previsões não mudam). Antes de avaliar ou medir tempo, desligue no PowerShell:
@@ -187,7 +187,7 @@ python experimentos_antigos/<script>.py
 ## Solução congelada
 
 Antes da avaliação final, os três modelos e todos os scripts da solução foram **congelados**, com o registro do seu
-SHA-256 em `artifacts/protocolo_congelado/PROTOCOLO_CONGELADO.md`. O mesmo arquivo descreve as regras definidas
+SHA-256 em `PROTOCOLO_CONGELADO.md`. O mesmo arquivo descreve as regras definidas
 antes da coleta das fotos novas: execução única, nenhuma foto descartada e nenhuma configuração declarada vencedora.
 
 Para conferir se nada foi alterado:
