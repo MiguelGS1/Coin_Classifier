@@ -53,18 +53,30 @@ teste deste trabalho usa **séries inteiras que não aparecem no treino**.
 
 ```
 Coin_Classifier/
-├── config.py, dataset_loader.py, model_builder.py, metrics.py, io_utils.py   # base (usados por todos)
+├── config.py, dataset_loader.py, model_builder.py, metrics.py, io_utils.py   # base da solução
 ├── make_group_split.py                     # divisão por série
-├── train_*.py                              # treinos (evolução do modelo)
+├── train_group_split_profundo_balanco_branco_cutout*.py   # treino dos 3 modelos da solução
 ├── avaliar_ensemble.py, prever_ensemble.py # solução sem recorte
 ├── prever_moeda_recortada.py, avaliar_ensemble_recorte.py   # solução com recorte
-├── congelar_solucao.py                     # registro (hash) da solução congelada
 ├── avaliacao_final.py                      # avaliação final (fotos novas)
-├── analisar_ensemble.py, comparar_pipelines.py, oclusao_*.py, gradcam_*.py, medir_tempo*.py, ...   # análises
+├── congelar_solucao.py                     # registro (hash) da solução congelada
+├── montar_extra_ucoin_v2.py                # montagem do World Coins
+├── evolucao_modelo/                        # modelos anteriores (caminho até a solução)
+├── analises/                               # análises e figuras usadas no artigo
+├── auxiliares/                             # avaliação ou previsão com um único modelo
 ├── experimentos_antigos/                   # variantes descartadas (mantidas para consulta)
+├── PROTOCOLO_CONGELADO.md                  # registro do congelamento (hashes e regras)
+├── pacotes_ambiente.txt                    # versões exatas dos pacotes usados
 ├── exclusoes_extra_ucoin_v2.csv            # lista de exclusões do World Coins
 ├── dataset/                                # NÃO versionado (ver "Dados")
 └── artifacts/                              # NÃO versionado: modelos e resultados
+```
+
+A raiz contém apenas a solução final. Os scripts das pastas `evolucao_modelo/`, `analises/`, `auxiliares/` e
+`experimentos_antigos/` usam os módulos da raiz; para rodá-los, a partir da raiz do projeto:
+```powershell
+$env:PYTHONPATH = "."
+python analises/<script>.py
 ```
 
 ---
@@ -132,55 +144,59 @@ Para o World Coins, troque `--pasta` por `dataset/extra_ucoin_limpov2` e use out
 
 ## Scripts
 
-### Solução (congelados)
+### Solução final (raiz)
 
 | Script | O que faz |
 |---|---|
 | `config.py` | Caminhos e hiperparâmetros (224×224, lote 16, Adam 1e-3, semente 42) |
 | `dataset_loader.py` | Leitura e preparação das imagens |
 | `metrics.py`, `io_utils.py` | Métricas (acurácia, F1, matriz de confusão) e JSON |
+| `model_builder.py` | Base da arquitetura (4 blocos, aumento de dados básico e parte final), usada pelo treino |
 | `make_group_split.py` | Divisão por série (séries inteiras no treino ou no teste) |
-| `train_group_split_profundo_balanco_branco_cutout2.py` | Treino do modelo final (6 blocos, balanço de branco e cutout) |
+| `train_group_split_profundo_balanco_branco_cutout2.py` | Treino do modelo final (6 blocos, balanço de branco e cutout); modelos s1 e s2 |
+| `train_group_split_profundo_balanco_branco_cutout.py` | Mesmo treino, com parada antecipada; modelo s42 |
 | `avaliar_ensemble.py` / `prever_ensemble.py` | Ensemble sem recorte: avaliar uma pasta / classificar fotos |
 | `prever_moeda_recortada.py` / `avaliar_ensemble_recorte.py` | Ensemble com recorte: classificar fotos / avaliar uma pasta |
 | `avaliacao_final.py` | Avaliação final: roda as duas configurações uma única vez nas fotos novas |
 | `congelar_solucao.py` | Registra os hashes da solução (`--verificar` confere se nada mudou) |
+| `montar_extra_ucoin_v2.py` | Monta o World Coins a partir da fonte original |
 
-### Evolução do modelo
+### `evolucao_modelo/`
 
 | Script | Modelo |
 |---|---|
 | `train.py` (+ `evaluate.py`, `predict.py`, `openset_utils.py`, `evaluate_openset.py`) | Primeira versão, com divisão aleatória e reconhecimento *open-set* |
-| `train_group_split.py`, `train_group_split2.py` | Modelo inicial de 4 blocos, com divisão por série |
-| `train_group_split_profundo.py`, `train_group_split_profundo2.py` | 6 blocos |
-| `train_group_split_profundo_balanco_branco_cutout.py` | 6 blocos + balanço de branco + cutout, com parada antecipada |
-| `model_builder.py` | Construção das redes |
+| `train_group_split.py`, `train_group_split2.py` | Modelo inicial de 4 blocos, com divisão por série (o `2` aceita `--semente`) |
+| `train_group_split_profundo.py`, `train_group_split_profundo2.py` | 6 blocos (o `2` aceita `--sem_parada`) |
 
-### Análises
+### `analises/`
 
 | Script | Análise |
 |---|---|
 | `verificar_duplicatas.py`, `refinar_duplicatas.py` | Cópias exatas e quase iguais entre treino e teste |
 | `conferir_pasta_externa.py` | Cópias entre o World Coins e o U.S. Coins |
 | `medir_series.py`, `analisar_erros_series.py` | Brilho e tom por série; erros por série (motivaram o balanço de branco) |
-| `figura_series.py`, `figura_treino_teste.py`, `folhas_por_serie.py` | Figuras e inspeção visual das séries |
+| `folhas_por_serie.py`, `figura_series.py`, `figura_treino_teste.py` | Inspeção visual e figuras das séries |
 | `analisar_ensemble.py` | Concordância entre os modelos e o ensemble |
 | `comparar_pipelines.py` | Comparação foto a foto sem × com recorte (McNemar) |
+| `listar_erros_pasta.py` | Lista os erros de um modelo numa pasta |
 | `occlusion_test.py`, `oclusao_v2.py`, `oclusao_ensemble.py` | Teste de oclusão e de remoção da cor |
 | `gradcam_v2.py`, `gradcam_v3.py`, `gradcam_imagem.py` | Mapas Grad-CAM |
-| `listar_erros_pasta.py` | Lista os erros de um modelo numa pasta |
+| `montar_figura_gradcam.py` | Monta a figura de Grad-CAM do artigo a partir de imagens já salvas |
 | `medir_tempo.py`, `medir_tempo_recorte.py`, `diagnostico_tempo.py` | Tempo por imagem e diagnóstico do oneDNN |
 | `figura_exemplos.py` | Figura com fotos originais e recortadas (e respostas das duas configurações) |
-| `avaliar_pasta.py`, `prever_imagem.py`, `controle_modelo_original.py` | Avaliação ou previsão com um único modelo |
+
+### `auxiliares/`
+
+| Script | O que faz |
+|---|---|
+| `avaliar_pasta.py`, `prever_imagem.py` | Avaliação de uma pasta ou previsão de fotos com um único modelo |
+| `controle_modelo_original.py` | Teste do primeiro modelo numa pasta de controle antiga |
 
 ### `experimentos_antigos/`
 
 Variantes testadas e descartadas: tons de cinza, cutout sozinho, balanço de branco sozinho, escala, rotação, dourado,
-fotos de celular e bases LPR/Roboflow. Ficam no repositório para consulta. Para rodar um deles:
-```powershell
-$env:PYTHONPATH = "."
-python experimentos_antigos/<script>.py
-```
+fotos de celular e bases LPR/Roboflow. Ficam no repositório para consulta.
 
 ---
 
