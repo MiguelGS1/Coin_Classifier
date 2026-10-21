@@ -228,3 +228,16 @@ Matriz do ensemble com recorte (linhas = moeda certa; colunas = resposta, na ord
 3. `$env:TF_ENABLE_ONEDNN_OPTS="0"`
 4. `python avaliacao_final.py ... --conferir` → tem que dizer "Pastas e planilhas conferem". Se não disser, corrige-se **só a planilha ou o nome das pastas**, nunca as fotos.
 5. `python avaliacao_final.py ...` sem `--conferir` → **uma única vez**, com saída em `artifacts/experiments/avaliacao_final`.
+## Acréscimo (2026-10-21): model_builder.py
+
+- O script de treino final (`train_group_split_profundo_balanco_branco_cutout2.py`) importa `build_model` do
+  `model_builder.py`, que define os 4 primeiros blocos convolucionais, o aumento de dados básico (espelhamento,
+  rotação, zoom e contraste) e a parte final da rede. Esse arquivo não constava da lista de scripts congelados.
+- Ele não é usado na avaliação: os scripts de avaliação carregam os arquivos `.keras`, que já guardam a arquitetura
+  completa e os pesos. Só é necessário para treinar os modelos de novo.
+- Última alteração no repositório: commit `acf6634` (2026-09-26), anterior ao congelamento.
+- Não será alterado até o fim do trabalho.
+
+| Arquivo | SHA-256 |
+|---|---|
+| model_builder.py | `e6efb83acffe25d1b54751b2b3f3032fdbbb88649e26a513bd801ceff35f9592` |
