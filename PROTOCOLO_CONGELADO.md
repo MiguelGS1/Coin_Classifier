@@ -241,3 +241,38 @@ Matriz do ensemble com recorte (linhas = moeda certa; colunas = resposta, na ord
 | Arquivo | SHA-256 |
 |---|---|
 | model_builder.py | `e6efb83acffe25d1b54751b2b3f3032fdbbb88649e26a513bd801ceff35f9592` |
+
+
+
+
+## Acréscimo (2026-10-23): condições de captura da avaliação final
+
+Condições definidas em 2026-10-22, antes da coleta das fotos, e registradas aqui antes de qualquer foto da avaliação
+final ser classificada.
+
+- **Motivo da mudança:** as moedas disponíveis estão em suportes de colecionador, com fundo roxo ou vermelho, e não
+  podem ser retiradas. Por isso, as três sessões previstas (fundo branco, fundo preto com luz amarela e mesa com a
+  moeda inclinada) foram substituídas pelas condições abaixo. A mudança se deve apenas à forma física das moedas.
+- **Moedas:** 5 exemplares de acabamento proof, de conjuntos oficiais da U.S. Mint:
+  - Proof Set de 1988 (suporte roxo): Jefferson Nickel (J01), Lincoln Cent (L01) e Washington Quarter (W01);
+  - Silver Proof Set de 2002 (suporte vermelho): Jefferson Nickel (J02) e Lincoln Cent (L02).
+  Todas estão dentro do escopo definido (Jefferson até 2003, Lincoln até 2008 e Washington até 1998, com águia).
+- **Fundo:** o próprio suporte (roxo ou vermelho).
+- **Luz:** luminária de LED de teto, luz branca quente, ambiente interno, a mesma em todas as fotos.
+- **Celular:** iPhone 14 Pro, o mesmo em todas as fotos.
+- **Modalidades** (coluna `sessao` da planilha):
+  1. normal: celular paralelo à moeda, moeda na posição usual;
+  2. girada: celular paralelo, moeda girada ou de cabeça para baixo;
+  3. inclinada: celular em ângulo, moeda vista de lado.
+- **Faces:** anverso e reverso.
+- **Quantidade:** 5 fotos por moeda, face e modalidade (150 fotos no total), com nomes no padrão
+  `CODIGO_face_modalidade_numero.jpeg` (por exemplo, `J02_reverso_girada_1.jpeg`).
+- **Planilhas:** `fotos_teste_final.csv` (uma linha por foto) e `exemplares_teste_final.csv` (uma linha por moeda,
+  com ano, fundo e acabamento).
+- **Critério de inclusão (mantido):** uma única moeda, inteira e com o texto legível. Se uma foto falhar, ela é
+  refeita na hora, e o descarte é anotado com o motivo.
+- **Fotos de teste:** as fotos da pasta `TESTES`, usadas antes para testar o script de previsão, não fazem parte da
+  avaliação final. Todas as 150 fotos da avaliação são novas, e nenhuma passou por um modelo antes da execução única.
+- **Limitação conhecida:** todas as moedas são proof e estão em suporte; o resultado vale para esse tipo de moeda e não
+  deve ser generalizado para moedas de circulação.
+- O restante do protocolo (scripts, hashes, ordem dos comandos e execução única) não muda.
