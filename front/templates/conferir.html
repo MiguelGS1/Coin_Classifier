@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block titulo %}Conferir recorte{% endblock %}
+{% block conteudo %}
+{% if foto.suspeita %}
+<div role="alert" class="alerta alerta-icone">
+<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3L26 24H2L14 3z" fill="none" stroke="#9A6510" stroke-width="2" stroke-linejoin="round"></path><path d="M14 11v6" stroke="#9A6510" stroke-width="2" stroke-linecap="round"></path><circle cx="14" cy="20.5" r="1.3" fill="#9A6510"></circle></svg>
+<div>
+{% if foto.encontrado %}
+<div class="alerta-titulo">O recorte pode ter cortado parte da moeda</div>
+<div>O círculo encontrado encosta na borda da foto. Isso costuma acontecer quando a moeda ocupa quase toda a imagem. Confira as duas imagens antes de continuar.</div>
+{% else %}
+<div class="alerta-titulo">O contorno da moeda não foi encontrado</div>
+<div>Foi usado o quadrado central da foto, sem remover o fundo. Confira as duas imagens antes de continuar.</div>
+{% endif %}
+</div>
+</div>
+{% endif %}
+
+<div class="grade-duas">
+<figure class="cartao figura">
+<figcaption class="legenda"><span class="forte">Foto enviada</span><span class="secundario pequeno">{% if foto.encontrado %}em azul, o círculo encontrado{% else %}em branco, o quadrado usado{% endif %}</span></figcaption>
+<img src="{{ url_for('imagem', id_foto=id_foto, tipo='previa') }}" alt="Foto enviada{% if foto.encontrado %}, com o círculo encontrado desenhado em azul{% endif %}" class="foto">
+</figure>
+
+<figure class="cartao figura">
+<figcaption class="legenda"><span class="forte">Imagem que as redes vão receber</span><span class="num secundario pequeno">224 × 224 px</span></figcaption>
+<div class="moldura"><img src="{{ url_for('imagem', id_foto=id_foto, tipo='recorte') }}" alt="Imagem recortada que as redes recebem" class="imagem-rede"></div>
+{% if foto.suspeita and foto.encontrado %}<div class="secundario pequeno">A borda externa da moeda, onde ficam as inscrições, pode ter ficado de fora.</div>{% endif %}
+</figure>
+</div>
+
+<section class="cartao coluna-gap">
+<h2 class="titulo-secao">O recorte ficou bom?</h2>
+<div class="botoes">
+<form method="post" action="{{ url_for('classificar_com', id_foto=id_foto) }}"><input type="hidden" name="modo" value="recorte"><button type="submit" class="botao">Sim, classificar com o recorte</button></form>
+<form method="post" action="{{ url_for('classificar_com', id_foto=id_foto) }}"><input type="hidden" name="modo" value="inteira"><button type="submit" class="botao botao-claro">Não, usar a foto inteira</button></form>
+<a href="{{ url_for('enviar') }}" class="botao-link"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="4" width="15" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"></rect><circle cx="9" cy="9.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"></circle><path d="M6 4l1.2-2h3.6L12 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>Enviar outra foto</a>
+</div>
+<p class="secundario pequeno largura-texto">Com a foto inteira, a moeda é classificada sem o recorte. As duas formas usam as mesmas três redes e foram avaliadas no trabalho; em fotos novas de moedas físicas, a classificação com recorte foi bem mais confiável.</p>
+<div class="caixa-dica">
+<div class="forte">Para uma nova foto</div>
+<ul>
+<li>Fotografe de cima, sem inclinar o celular, e afaste um pouco a câmera para a moeda não ocupar a foto inteira.</li>
+<li>Evite reflexos e brilho forte sobre a moeda.</li>
+<li>Deixe a moeda centralizada, com o desenho em pé e uma margem livre em volta.</li>
+</ul>
+</div>
+</section>
+{% endblock %}

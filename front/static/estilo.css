@@ -1,0 +1,147 @@
+:root {
+  --fundo: #F3F6F8;
+  --superficie: #FFFFFF;
+  --borda: #D8E0E6;
+  --texto: #15202B;
+  --secundario: #51606E;
+  --destaque: #2D5A7B;
+  --destaque-escuro: #1E4260;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a { color: var(--destaque); }
+a:hover { color: var(--destaque-escuro); }
+h1, h2 { margin: 0; }
+.num { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+.secundario { color: var(--secundario); }
+.pequeno { font-size: 14px; }
+.forte { font-weight: 600; }
+.direita { text-align: right; }
+.largura-texto { max-width: 70ch; margin: 0; }
+
+/* Cabeçalho */
+.topo { background: var(--superficie); border-bottom: 1px solid var(--borda); }
+.topo-conteudo { max-width: 1120px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+.marca { display: flex; gap: 14px; align-items: center; }
+.marca-nome { font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+.marca-sub { font-size: 13px; color: var(--secundario); }
+.selos { display: flex; gap: 8px; flex-wrap: wrap; }
+.selo { font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 6px 10px; border: 1px solid var(--borda); border-radius: 6px; color: var(--secundario); }
+
+/* Página */
+.pagina { max-width: 1120px; margin: 0 auto; padding: 36px 32px 48px; display: flex; flex-direction: column; gap: 28px; }
+
+/* Etapas */
+.etapas { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.etapa { display: flex; gap: 10px; align-items: center; padding: 8px 14px 8px 8px; border: 1px solid var(--borda); background: var(--superficie); color: var(--secundario); border-radius: 999px; font-size: 14px; }
+.etapa-num { width: 24px; height: 24px; border-radius: 999px; background: #E6EDF2; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+.etapa.atual { background: var(--destaque); border-color: var(--destaque); color: #FFFFFF; font-weight: 600; }
+.etapa.atual .etapa-num { background: #FFFFFF; color: var(--destaque); }
+.etapa-linha { width: 28px; height: 1px; background: #C3CDD5; }
+
+/* Estrutura */
+.colunas { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+.principal { flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.lateral { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.cartao { background: var(--superficie); border: 1px solid var(--borda); border-radius: 14px; padding: 22px; }
+.coluna-gap { display: flex; flex-direction: column; gap: 16px; }
+.grade-duas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+h1 { font-size: 32px; line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+.rotulo { margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--secundario); }
+.titulo-secao { font-size: 20px; font-weight: 700; }
+
+/* Envio */
+.envio { display: flex; flex-direction: column; gap: 14px; }
+.area-envio { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 48px 24px; background: var(--superficie); border: 2px dashed #A9B8C4; border-radius: 14px; text-align: center; cursor: pointer; }
+.area-envio:focus-within { border-color: var(--destaque); }
+.area-titulo { font-size: 18px; font-weight: 600; }
+.area-sub { font-size: 14px; color: var(--secundario); }
+.area-envio input { font-family: inherit; font-size: 14px; max-width: 100%; }
+.barra-envio { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; justify-content: space-between; }
+
+/* Botões */
+.botao { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; min-height: 44px; background: var(--destaque); color: #FFFFFF; border: 0; border-radius: 10px; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+.botao:hover { background: var(--destaque-escuro); color: #FFFFFF; }
+.botao-claro { background: #FFFFFF; color: var(--texto); border: 1px solid #A9B8C4; }
+.botao-claro:hover { background: #EEF3F7; color: var(--texto); }
+.botao-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; min-height: 44px; color: var(--destaque); font-weight: 600; text-decoration: none; }
+.botoes { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.botoes form { margin: 0; }
+.link { background: none; border: 0; padding: 0; min-height: 44px; font: inherit; font-size: 15px; font-weight: 500; color: var(--destaque); text-decoration: underline; cursor: pointer; }
+.link:hover { color: var(--destaque-escuro); }
+
+/* Dicas e avisos */
+.dicas { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 24px; font-size: 15px; }
+.dicas li { display: flex; gap: 10px; align-items: flex-start; }
+.dicas svg { flex: none; margin-top: 2px; }
+.alerta { padding: 14px 18px; background: #FFF4DE; border: 1px solid #E8B04B; border-radius: 12px; color: #5C3A06; }
+.alerta-icone { display: flex; gap: 16px; align-items: flex-start; font-size: 15px; }
+.alerta-icone svg { flex: none; }
+.alerta-titulo { font-weight: 700; font-size: 17px; }
+.aviso { margin: 18px 0 0; padding: 12px 14px; background: #EEF3F7; border-radius: 8px; font-size: 14px; color: #33414E; }
+.caixa-dica { padding: 14px 16px; background: #EEF3F7; border-radius: 10px; font-size: 14px; color: #33414E; }
+.caixa-dica ul { margin: 6px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+
+/* Lateral */
+.lista-moedas { display: flex; flex-direction: column; gap: 14px; }
+.moeda-item { display: flex; gap: 12px; align-items: flex-start; }
+.ponto { width: 14px; height: 14px; margin-top: 5px; border-radius: 999px; flex: none; }
+.passos { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+
+/* Imagens */
+.figura { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.legenda { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.foto { width: 100%; height: auto; border-radius: 10px; display: block; }
+.moldura { display: flex; justify-content: center; background: var(--fundo); border-radius: 10px; padding: 20px 0; }
+.imagem-rede { width: 62%; max-width: 280px; height: auto; display: block; border: 1px solid var(--borda); image-rendering: auto; }
+.imagem-grande { width: 78%; }
+.etiquetas { display: flex; flex-wrap: wrap; gap: 8px; }
+.etiqueta { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: #EEF1F4; color: #33414E; }
+.etiqueta-forte { background: #E6EEF4; color: var(--destaque-escuro); font-weight: 600; }
+.nome-arquivo { font-family: 'IBM Plex Mono', monospace; overflow-wrap: anywhere; }
+
+/* Resultado */
+.lateral-resultado { flex: 1 1 300px; min-width: 0; }
+.resultado { padding: 28px; gap: 24px; }
+.cabecalho-resultado { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; }
+.nome-moeda { display: flex; gap: 14px; align-items: center; margin-top: 6px; }
+.nome-moeda h1 { font-size: 44px; line-height: 1.1; margin: 0; }
+.ponto-grande { width: 18px; height: 18px; border-radius: 999px; flex: none; }
+.probabilidade { text-align: right; }
+.prob-grande { font-size: 40px; font-weight: 500; line-height: 1; }
+.titulo-barras { font-size: 16px; font-weight: 600; }
+.barras { display: grid; grid-template-columns: 180px minmax(0, 1fr) 64px; gap: 10px 14px; align-items: center; }
+.trilho { height: 14px; background: #EEF1F4; border-radius: 999px; overflow: hidden; display: block; }
+.preenchido { display: block; height: 100%; border-radius: 999px; min-width: 2px; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--borda); }
+.acoes form { margin: 0; }
+.links { display: flex; flex-wrap: wrap; gap: 4px 20px; align-items: center; }
+.links a { font-size: 15px; font-weight: 500; }
+.rodape-aviso { margin: 0; font-size: 13px; color: var(--secundario); }
+
+/* Rodapé */
+.rodape { display: flex; flex-wrap: wrap; gap: 8px 24px; padding-top: 20px; border-top: 1px solid var(--borda); font-size: 13px; color: var(--secundario); }
+.rodape b { color: var(--texto); }
+
+/* Celular */
+@media (max-width: 600px) {
+  .topo-conteudo, .pagina { padding-left: 16px; padding-right: 16px; }
+  .pagina { padding-top: 24px; }
+  h1 { font-size: 26px; }
+  .nome-moeda h1 { font-size: 32px; }
+  .prob-grande { font-size: 32px; }
+  .probabilidade { text-align: left; }
+  .barras { grid-template-columns: 130px minmax(0, 1fr) 56px; gap: 10px; font-size: 14px; }
+  .imagem-rede, .imagem-grande { width: 80%; }
+}

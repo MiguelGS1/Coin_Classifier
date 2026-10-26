@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block titulo %}{% endblock %} · Classificador de Moedas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+<header class="topo">
+<div class="topo-conteudo">
+<div class="marca">
+<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#2D5A7B" stroke-width="2"></circle><circle cx="20" cy="20" r="13" fill="none" stroke="#2D5A7B" stroke-width="1" stroke-dasharray="2 2"></circle><circle cx="20" cy="20" r="4" fill="#2D5A7B"></circle></svg>
+<div>
+<div class="marca-nome">Classificador de Moedas</div>
+<div class="marca-sub">TCC · Ciência da Computação · PUCRS</div>
+</div>
+</div>
+<div class="selos">
+<span class="selo">ensemble · 3 redes</span>
+<span class="selo">execução local</span>
+</div>
+</div>
+</header>
+
+<main class="pagina">
+<nav aria-label="Etapas" class="etapas">
+{% set nomes = ["Enviar foto", "Conferir recorte", "Resultado"] %}
+{% for nome in nomes %}
+{% set n = loop.index %}
+{% if n == etapa %}
+<span class="etapa atual" aria-current="step"><span class="etapa-num">{{ n }}</span>{{ nome }}</span>
+{% elif n < etapa %}
+<span class="etapa"><span class="etapa-num"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>{{ nome }}</span>
+{% else %}
+<span class="etapa"><span class="etapa-num">{{ n }}</span>{{ nome }}</span>
+{% endif %}
+{% if not loop.last %}<span class="etapa-linha"></span>{% endif %}
+{% endfor %}
+</nav>
+
+{% block conteudo %}{% endblock %}
+
+<footer class="rodape">
+<span>Acurácia em séries de fotos nunca vistas: <b class="num">96,1%</b> com recorte · <b class="num">94,0%</b> com a foto inteira</span>
+<span>Em fotos novas de moedas físicas: <b class="num">93,3%</b> com recorte · <b class="num">34,0%</b> com a foto inteira</span>
+<span>Kamilla de Paula Borges, Miguel Gheno dos Santos e Filipo Novo Mór</span>
+</footer>
+</main>
+</body>
+</html>

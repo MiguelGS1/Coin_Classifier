@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block titulo %}Enviar foto{% endblock %}
+{% block conteudo %}
+<div class="colunas">
+
+<section class="principal">
+<div>
+<h1>Qual é esta moeda?</h1>
+<p class="secundario largura-texto">Envie a foto de uma moeda. O sistema localiza a moeda, remove o fundo e combina a resposta de três redes neurais.</p>
+</div>
+
+{% if erro %}
+<div role="alert" class="alerta">{{ erro }}</div>
+{% endif %}
+
+<form method="post" action="{{ url_for('receber') }}" enctype="multipart/form-data" class="envio">
+<label for="foto" class="area-envio">
+<svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="12" width="44" height="34" rx="6" fill="none" stroke="#51606E" stroke-width="2"></rect><circle cx="28" cy="29" r="10" fill="none" stroke="#2D5A7B" stroke-width="2"></circle><path d="M28 2v14M22 8l6-6 6 6" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="area-titulo">Clique para escolher uma foto</span>
+<span class="area-sub">JPG ou PNG · uma foto por vez · uma única moeda, inteira</span>
+<input id="foto" name="foto" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" required>
+</label>
+<div class="barra-envio">
+<span class="secundario pequeno">No iPhone, para salvar em JPG: Ajustes › Câmera › Formatos › Mais Compatível.</span>
+<button type="submit" class="botao">Classificar moeda</button>
+</div>
+</form>
+
+<div class="cartao">
+<h2 class="rotulo">Dicas para uma boa foto</h2>
+<ul class="dicas">
+<li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 6" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span><b>Fotografe de cima</b>, com o celular paralelo à moeda, sem inclinar. A moeda deve aparecer redonda, e não oval.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 6" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span><b>Cuidado com a iluminação</b>: luz branca e uniforme, sem reflexos ou brilho forte sobre a moeda.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 6" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span><b>Desenho em pé</b>: evite fotografar a moeda de lado ou de cabeça para baixo.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 6" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span><b>Uma moeda só</b>, inteira e centralizada, com uma pequena margem livre em volta.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 6" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span><b>Fundo liso</b>, de cor diferente da moeda, e fora de cápsulas ou suportes, quando possível.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 6" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span><b>Foco nítido</b> nas inscrições da borda, que ajudam a identificar a moeda.</span></li>
+</ul>
+</div>
+</section>
+
+<aside class="lateral">
+<div class="cartao">
+<h2 class="rotulo">Moedas reconhecidas</h2>
+<div class="lista-moedas">
+{% for m in moedas %}
+<div class="moeda-item"><span class="ponto" style="background: {{ m.cor }}"></span><div><div class="forte"><i>{{ m.nome }}</i></div><div class="secundario pequeno">{{ m.valor }} · <span class="num">{{ m.periodo }}</span>{% if m.nome == "Washington Quarter" %}, com águia no reverso ou do bicentenário{% endif %}</div></div></div>
+{% endfor %}
+</div>
+<p class="aviso">Para qualquer outra moeda, o sistema ainda responde uma dessas três.</p>
+</div>
+
+<div class="cartao">
+<h2 class="rotulo">Como funciona</h2>
+<ol class="passos">
+<li>A moeda é localizada na foto e o fundo é pintado de branco.</li>
+<li>Três redes, treinadas do zero com sementes diferentes, analisam a imagem.</li>
+<li>A resposta é a média das probabilidades das três redes.</li>
+</ol>
+</div>
+</aside>
+
+</div>
+{% endblock %}

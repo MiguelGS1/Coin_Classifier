@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block titulo %}Resultado{% endblock %}
+{% block conteudo %}
+<div class="colunas">
+
+<figure class="cartao figura lateral-resultado">
+<figcaption class="forte">Imagem analisada</figcaption>
+<div class="moldura"><img src="{{ url_for('imagem', id_foto=id_foto, tipo=modo) }}" alt="Imagem de 224 × 224 pixels que as redes receberam" class="imagem-rede imagem-grande"></div>
+<div class="etiquetas">
+<span class="etiqueta etiqueta-forte">{% if modo == "recorte" %}Com recorte{% else %}Sem recorte (foto inteira){% endif %}</span>
+{% if modo == "recorte" %}<span class="etiqueta">{% if foto.encontrado %}Círculo encontrado{% else %}Círculo não encontrado{% endif %}</span>{% endif %}
+</div>
+<div class="secundario pequeno nome-arquivo">{{ foto.nome }}</div>
+</figure>
+
+<section class="cartao principal resultado">
+<div class="cabecalho-resultado">
+<div>
+<div class="rotulo">Moeda reconhecida</div>
+<div class="nome-moeda"><span class="ponto-grande" style="background: {{ vencedora.cor }}"></span><h1><i>{{ vencedora.nome }}</i></h1></div>
+<div class="secundario">{{ vencedora.valor }} · <span class="num">{{ vencedora.periodo }}</span></div>
+</div>
+<div class="probabilidade">
+<div class="num prob-grande">{{ vencedora.prob | pct }}</div>
+<div class="secundario pequeno">probabilidade do ensemble</div>
+</div>
+</div>
+
+<div class="coluna-gap">
+<h2 class="titulo-barras">Probabilidade de cada moeda</h2>
+<div class="barras">
+{% for b in barras %}
+<span class="{% if loop.first %}forte{% endif %}"><i>{{ b.nome }}</i></span>
+<span class="trilho"><span class="preenchido" style="width: {{ '%.1f' % (b.prob * 100) }}%; background: {{ b.cor }}"></span></span>
+<span class="num direita">{{ b.prob | pct }}</span>
+{% endfor %}
+</div>
+<p class="secundario pequeno">Média das probabilidades das três redes (sementes 42, 1 e 2).</p>
+</div>
+
+<div class="acoes">
+<a href="{{ url_for('enviar') }}" class="botao">Classificar outra moeda</a>
+{% if modo == "recorte" %}
+<div class="links">
+<a href="{{ url_for('conferir', id_foto=id_foto) }}">Ver o recorte</a>
+<form method="post" action="{{ url_for('classificar_com', id_foto=id_foto) }}"><input type="hidden" name="modo" value="inteira"><button type="submit" class="link">Recorte errado? Classificar com a foto inteira</button></form>
+</div>
+{% else %}
+<form method="post" action="{{ url_for('classificar_com', id_foto=id_foto) }}"><input type="hidden" name="modo" value="recorte"><button type="submit" class="link">Classificar com o recorte</button></form>
+{% endif %}
+</div>
+</section>
+
+</div>
+<p class="rodape-aviso">O sistema reconhece apenas <i>Lincoln Cent</i> (1909–2008), <i>Jefferson Nickel</i> (1938–2003) e <i>Washington Quarter</i> (1932–1998). Para qualquer outra moeda, ainda responde uma dessas três.</p>
+{% endblock %}
