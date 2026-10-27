@@ -40,3 +40,8 @@ train_group_split_profundo_bb_cutout_v3.py
 
 artifactsAntigo/
 *.zip
+
+organizar_avaliacao_final.py
+exemplares_teste_final.csv
+fotos_teste_final.csv
+AvaliacaoFinal
