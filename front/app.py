@@ -148,10 +148,7 @@ def receber():
     FOTOS[id_foto] = {"pasta": pasta, "arquivo": caminho, "nome": arquivo.filename, "encontrado": circulo is not None,
                       "suspeita": suspeita, "resultados": {}}
 
-    if suspeita:
-        desenhar_previa(rgb, circulo, pasta / "previa.png")
-        classificar(FOTOS[id_foto], "recorte")  # gera a imagem 224 x 224 que as redes vão receber
-        return redirect(url_for("conferir", id_foto=id_foto))
+    # Sempre classifica com recorte; se o recorte for suspeito, o resultado mostra um aviso para conferir (etapa 3)
     classificar(FOTOS[id_foto], "recorte")
     return redirect(url_for("resultado", id_foto=id_foto, modo="recorte"))
 
@@ -163,7 +160,8 @@ def conferir(id_foto):
         rgb = recorte.load_rgb(str(foto["arquivo"]))
         circulo = recorte.find_coin(rgb)
         desenhar_previa(rgb, circulo, foto["pasta"] / "previa.png")
-    return render_template("conferir.html", etapa=2, id_foto=id_foto, foto=foto)
+    foto["conferido"] = True
+    return render_template("conferir.html", etapa=3, conferido=True, id_foto=id_foto, foto=foto)
 
 
 @app.post("/classificar/<id_foto>")
@@ -186,8 +184,8 @@ def resultado(id_foto):
     probs = foto["resultados"][modo]
     ordem = np.argsort(probs)[::-1]
     barras = [{**MOEDAS[CLASSES[i]], "prob": float(probs[i])} for i in ordem]
-    return render_template("resultado.html", etapa=3, id_foto=id_foto, foto=foto, modo=modo, vencedora=barras[0],
-                           barras=barras)
+    return render_template("resultado.html", etapa=2, conferido=foto.get("conferido", False), id_foto=id_foto,
+                           foto=foto, modo=modo, vencedora=barras[0], barras=barras)
 
 
 @app.get("/imagem/<id_foto>/<tipo>")

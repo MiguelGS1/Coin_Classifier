@@ -32,11 +32,11 @@
 <section class="cartao coluna-gap">
 <h2 class="titulo-secao">O recorte ficou bom?</h2>
 <div class="botoes">
-<form method="post" action="{{ url_for('classificar_com', id_foto=id_foto) }}"><input type="hidden" name="modo" value="recorte"><button type="submit" class="botao">Sim, classificar com o recorte</button></form>
-<form method="post" action="{{ url_for('classificar_com', id_foto=id_foto) }}"><input type="hidden" name="modo" value="inteira"><button type="submit" class="botao botao-claro">Não, usar a foto inteira</button></form>
+<a href="{{ url_for('resultado', id_foto=id_foto, modo='recorte') }}" class="botao">O recorte está bom, voltar ao resultado</a>
+<form method="post" action="{{ url_for('classificar_com', id_foto=id_foto) }}"><input type="hidden" name="modo" value="inteira"><button type="submit" class="botao botao-claro">Classificar com a foto inteira</button></form>
 <a href="{{ url_for('enviar') }}" class="botao-link"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="4" width="15" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"></rect><circle cx="9" cy="9.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"></circle><path d="M6 4l1.2-2h3.6L12 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg>Enviar outra foto</a>
 </div>
-<p class="secundario pequeno largura-texto">Com a foto inteira, a moeda é classificada sem o recorte. As duas formas usam as mesmas três redes e foram avaliadas no trabalho; em fotos novas de moedas físicas, a classificação com recorte foi bem mais confiável.</p>
+<p class="secundario pequeno largura-texto">Com a foto inteira, a moeda é classificada sem o recorte.<br><b>Sugestão:</b> prefira o recorte, pois ele isola a moeda e evita que o fundo, a luz ou o suporte influenciem a resposta.</p>
 <div class="caixa-dica">
 <div class="forte">Para uma nova foto</div>
 <ul>

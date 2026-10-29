@@ -48,6 +48,8 @@ h1, h2 { margin: 0; }
 .etapa.atual { background: var(--destaque); border-color: var(--destaque); color: #FFFFFF; font-weight: 600; }
 .etapa.atual .etapa-num { background: #FFFFFF; color: var(--destaque); }
 .etapa-linha { width: 28px; height: 1px; background: #C3CDD5; }
+.etapa-opcional { font-size: 12px; opacity: 0.8; }
+.etapa-pendente-opcional { border-style: dashed; border-color: #A9B8C4; background: transparent; }
 
 /* Estrutura */
 .colunas { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
@@ -89,6 +91,7 @@ h1 { font-size: 32px; line-height: 1.2; font-weight: 700; letter-spacing: -0.02e
 .alerta-icone { display: flex; gap: 16px; align-items: flex-start; font-size: 15px; }
 .alerta-icone svg { flex: none; }
 .alerta-titulo { font-weight: 700; font-size: 17px; }
+.alerta-corpo { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 .aviso { margin: 18px 0 0; padding: 12px 14px; background: #EEF3F7; border-radius: 8px; font-size: 14px; color: #33414E; }
 .caixa-dica { padding: 14px 16px; background: #EEF3F7; border-radius: 10px; font-size: 14px; color: #33414E; }
 .caixa-dica ul { margin: 6px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
@@ -130,9 +133,6 @@ h1 { font-size: 32px; line-height: 1.2; font-weight: 700; letter-spacing: -0.02e
 .links a { font-size: 15px; font-weight: 500; }
 .rodape-aviso { margin: 0; font-size: 13px; color: var(--secundario); }
 
-/* Rodapé */
-.rodape { display: flex; flex-wrap: wrap; gap: 8px 24px; padding-top: 20px; border-top: 1px solid var(--borda); font-size: 13px; color: var(--secundario); }
-.rodape b { color: var(--texto); }
 
 /* Celular */
 @media (max-width: 600px) {

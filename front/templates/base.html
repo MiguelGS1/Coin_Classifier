@@ -26,27 +26,24 @@
 
 <main class="pagina">
 <nav aria-label="Etapas" class="etapas">
-{% set nomes = ["Enviar foto", "Conferir recorte", "Resultado"] %}
+{# A etapa 3 (Conferir recorte) é opcional: tracejada enquanto não for usada #}
+{% set nomes = ["Enviar foto", "Resultado", "Conferir recorte"] %}
 {% for nome in nomes %}
 {% set n = loop.index %}
+{% set opcional = n == 3 %}
+{% set rotulo %}{{ nome }}{% if opcional %} <span class="etapa-opcional">(opcional)</span>{% endif %}{% endset %}
 {% if n == etapa %}
-<span class="etapa atual" aria-current="step"><span class="etapa-num">{{ n }}</span>{{ nome }}</span>
-{% elif n < etapa %}
-<span class="etapa"><span class="etapa-num"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>{{ nome }}</span>
+<span class="etapa atual" aria-current="step"><span class="etapa-num">{{ n }}</span>{{ rotulo }}</span>
+{% elif n < etapa or (opcional and conferido) %}
+<span class="etapa"><span class="etapa-num"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="#2D5A7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>{{ rotulo }}</span>
 {% else %}
-<span class="etapa"><span class="etapa-num">{{ n }}</span>{{ nome }}</span>
+<span class="etapa{% if opcional %} etapa-pendente-opcional{% endif %}"><span class="etapa-num">{{ n }}</span>{{ rotulo }}</span>
 {% endif %}
 {% if not loop.last %}<span class="etapa-linha"></span>{% endif %}
 {% endfor %}
 </nav>
 
 {% block conteudo %}{% endblock %}
-
-<footer class="rodape">
-<span>Acurácia em séries de fotos nunca vistas: <b class="num">96,1%</b> com recorte · <b class="num">94,0%</b> com a foto inteira</span>
-<span>Em fotos novas de moedas físicas: <b class="num">93,3%</b> com recorte · <b class="num">34,0%</b> com a foto inteira</span>
-<span>Kamilla de Paula Borges, Miguel Gheno dos Santos e Filipo Novo Mór</span>
-</footer>
 </main>
 </body>
 </html>
