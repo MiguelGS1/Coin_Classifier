@@ -28,10 +28,12 @@ O `app.py` já desliga as otimizações oneDNN (`TF_ENABLE_ONEDNN_OPTS=0`), como
 ## Como funciona
 
 1. **Enviar foto:** aceita JPG e PNG (no iPhone: Ajustes › Câmera › Formatos › Mais Compatível).
-2. **Conferir recorte:** só aparece quando o círculo da moeda não é encontrado ou encosta na borda da foto
-   (a menos de 2% do lado). Essa regra é só do front e não muda nenhum parâmetro da detecção.
-3. **Resultado:** moeda reconhecida e probabilidade de cada classe (média das três redes). A imagem mostrada é a que
-   as redes receberam (224 × 224). Também é possível classificar com a foto inteira.
+2. **Resultado:** moeda reconhecida e probabilidade de cada classe (média das três redes), sempre com recorte. A
+   imagem mostrada é a que as redes receberam (224 × 224). Se o círculo da moeda não for encontrado ou encostar na
+   borda da foto (a menos de 2% do lado), aparece um aviso para conferir o recorte. Essa regra é só do front e não
+   muda nenhum parâmetro da detecção.
+3. **Conferir recorte (opcional):** mostra a foto com o círculo encontrado e a imagem que as redes receberam, e
+   permite classificar com a foto inteira.
 
 As fotos enviadas ficam numa pasta temporária, apagada quando o programa é fechado. Nada é enviado para a internet
 (só as fontes da página vêm do Google Fonts; sem internet, a página usa a fonte do sistema).

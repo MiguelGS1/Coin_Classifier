@@ -78,6 +78,7 @@ no manifesto).
 ## 6. Como avaliar um modelo
 
 ```
-python avaliar_pasta.py --modelo CAMINHO/modelo_divisao_series.keras --pasta dataset/extra_ucoin_limpov2 --nome NOME
+$env:PYTHONPATH = "."
+python auxiliares/avaliar_pasta.py --modelo CAMINHO/modelo_divisao_series.keras --pasta dataset/extra_ucoin_limpov2 --nome NOME
 ```
 
