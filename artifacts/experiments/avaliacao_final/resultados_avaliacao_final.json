@@ -1,0 +1,531 @@
+{
+  "modelos": {
+    "s42": {
+      "arquivo": "artifacts/experiments/divisao_series_v2_profundo_balanco_branco_cutout/modelo_divisao_series.keras",
+      "sha256": "8bde3bb84849535c124b9800208398cc9f59eabb73b2e545592db7064321d332"
+    },
+    "s1": {
+      "arquivo": "artifacts/experiments/divisao_series_v2_profundo_balanco_branco_cutout_40ep_semente1/modelo_divisao_series.keras",
+      "sha256": "4585cd25cb26d83f893ed6bc0881a5f1146c638bc34b9c74038dfa84f4cbc0b5"
+    },
+    "s2": {
+      "arquivo": "artifacts/experiments/divisao_series_v2_profundo_balanco_branco_cutout_40ep_semente2/modelo_divisao_series.keras",
+      "sha256": "d8bc442df93453ddef6404d6a3359cfee1b1d0303e8ae31a0f17870d93bf6a2d"
+    }
+  },
+  "scripts": {
+    "config.py": "f3daa251688d033c5158debe2872b39a553cac1e8884309488fef73a414c1e26",
+    "dataset_loader.py": "c69324c2519e760c9b0cff25ec2344d417112a286811ff47ae2241386af0cfd5",
+    "metrics.py": "fba2d89d2a1ef94dbc7c77981dbfd66090caefd735a9d75c1a5738a4d9eb0395",
+    "prever_moeda_recortada.py": "7241a53120e3a6e5ac59d71f92de63010c2d8f0a58db2c92b8367d30407be794",
+    "avaliacao_final.py": "328d8d0dd856b2d732f803522c29043246da339677a5f695ee7ed0c5f5c3ee57"
+  },
+  "pasta": "dataset/teste_final",
+  "total_fotos": 150,
+  "total_exemplares": 5,
+  "circulo_encontrado": 150,
+  "configuracoes": {
+    "sem_recorte": {
+      "individual": {
+        "s42": {
+          "acuracia": 0.3466666666666667,
+          "precisao_macro": 0.3669637551990493,
+          "revocacao_macro": 0.35555555555555557,
+          "f1_macro": 0.3200748800748801,
+          "total_imagens": 150,
+          "por_classe": {
+            "Jefferson Nickels, 1938-Date": {
+              "precisao": 0.36363636363636365,
+              "revocacao": 0.5333333333333333,
+              "f1": 0.43243243243243246,
+              "suporte": 60
+            },
+            "Lincoln Cents, 1909-Date": {
+              "precisao": 0.47058823529411764,
+              "revocacao": 0.13333333333333333,
+              "f1": 0.2077922077922078,
+              "suporte": 60
+            },
+            "Washington Quarters, 1932-1998": {
+              "precisao": 0.26666666666666666,
+              "revocacao": 0.4,
+              "f1": 0.32,
+              "suporte": 30
+            }
+          },
+          "classes": [
+            "Jefferson Nickels, 1938-Date",
+            "Lincoln Cents, 1909-Date",
+            "Washington Quarters, 1932-1998"
+          ],
+          "matriz_confusao": [
+            [
+              32,
+              6,
+              22
+            ],
+            [
+              41,
+              8,
+              11
+            ],
+            [
+              15,
+              3,
+              12
+            ]
+          ]
+        },
+        "s1": {
+          "acuracia": 0.36666666666666664,
+          "precisao_macro": 0.39415981446341974,
+          "revocacao_macro": 0.35555555555555557,
+          "f1_macro": 0.3285461081453795,
+          "total_imagens": 150,
+          "por_classe": {
+            "Jefferson Nickels, 1938-Date": {
+              "precisao": 0.3627450980392157,
+              "revocacao": 0.6166666666666667,
+              "f1": 0.4567901234567901,
+              "suporte": 60
+            },
+            "Lincoln Cents, 1909-Date": {
+              "precisao": 0.5294117647058824,
+              "revocacao": 0.15,
+              "f1": 0.23376623376623373,
+              "suporte": 60
+            },
+            "Washington Quarters, 1932-1998": {
+              "precisao": 0.2903225806451613,
+              "revocacao": 0.3,
+              "f1": 0.29508196721311475,
+              "suporte": 30
+            }
+          },
+          "classes": [
+            "Jefferson Nickels, 1938-Date",
+            "Lincoln Cents, 1909-Date",
+            "Washington Quarters, 1932-1998"
+          ],
+          "matriz_confusao": [
+            [
+              37,
+              7,
+              16
+            ],
+            [
+              45,
+              9,
+              6
+            ],
+            [
+              20,
+              1,
+              9
+            ]
+          ]
+        },
+        "s2": {
+          "acuracia": 0.4,
+          "precisao_macro": 0.20229885057471264,
+          "revocacao_macro": 0.33888888888888885,
+          "f1_macro": 0.21091753774680602,
+          "total_imagens": 150,
+          "por_classe": {
+            "Jefferson Nickels, 1938-Date": {
+              "precisao": 0.4068965517241379,
+              "revocacao": 0.9833333333333333,
+              "f1": 0.5756097560975609,
+              "suporte": 60
+            },
+            "Lincoln Cents, 1909-Date": {
+              "precisao": 0.0,
+              "revocacao": 0.0,
+              "f1": 0.0,
+              "suporte": 60
+            },
+            "Washington Quarters, 1932-1998": {
+              "precisao": 0.2,
+              "revocacao": 0.03333333333333333,
+              "f1": 0.05714285714285715,
+              "suporte": 30
+            }
+          },
+          "classes": [
+            "Jefferson Nickels, 1938-Date",
+            "Lincoln Cents, 1909-Date",
+            "Washington Quarters, 1932-1998"
+          ],
+          "matriz_confusao": [
+            [
+              59,
+              0,
+              1
+            ],
+            [
+              57,
+              0,
+              3
+            ],
+            [
+              29,
+              0,
+              1
+            ]
+          ]
+        }
+      },
+      "media_individual": 0.3711111111111111,
+      "desvio_individual": 0.026943012562182546,
+      "ensemble": {
+        "acuracia": 0.34,
+        "precisao_macro": 0.3251139660174057,
+        "revocacao_macro": 0.29444444444444445,
+        "f1_macro": 0.21560214995088942,
+        "total_imagens": 150,
+        "por_classe": {
+          "Jefferson Nickels, 1938-Date": {
+            "precisao": 0.3700787401574803,
+            "revocacao": 0.7833333333333333,
+            "f1": 0.5026737967914437,
+            "suporte": 60
+          },
+          "Lincoln Cents, 1909-Date": {
+            "precisao": 0.5,
+            "revocacao": 0.03333333333333333,
+            "f1": 0.0625,
+            "suporte": 60
+          },
+          "Washington Quarters, 1932-1998": {
+            "precisao": 0.10526315789473684,
+            "revocacao": 0.06666666666666667,
+            "f1": 0.0816326530612245,
+            "suporte": 30
+          }
+        },
+        "classes": [
+          "Jefferson Nickels, 1938-Date",
+          "Lincoln Cents, 1909-Date",
+          "Washington Quarters, 1932-1998"
+        ],
+        "matriz_confusao": [
+          [
+            47,
+            2,
+            11
+          ],
+          [
+            52,
+            2,
+            6
+          ],
+          [
+            28,
+            0,
+            2
+          ]
+        ]
+      }
+    },
+    "com_recorte": {
+      "individual": {
+        "s42": {
+          "acuracia": 0.8733333333333333,
+          "precisao_macro": 0.8640608785887237,
+          "revocacao_macro": 0.8944444444444445,
+          "f1_macro": 0.8682745269361568,
+          "total_imagens": 150,
+          "por_classe": {
+            "Jefferson Nickels, 1938-Date": {
+              "precisao": 0.9795918367346939,
+              "revocacao": 0.8,
+              "f1": 0.8807339449541285,
+              "suporte": 60
+            },
+            "Lincoln Cents, 1909-Date": {
+              "precisao": 0.8983050847457628,
+              "revocacao": 0.8833333333333333,
+              "f1": 0.8907563025210085,
+              "suporte": 60
+            },
+            "Washington Quarters, 1932-1998": {
+              "precisao": 0.7142857142857143,
+              "revocacao": 1.0,
+              "f1": 0.8333333333333333,
+              "suporte": 30
+            }
+          },
+          "classes": [
+            "Jefferson Nickels, 1938-Date",
+            "Lincoln Cents, 1909-Date",
+            "Washington Quarters, 1932-1998"
+          ],
+          "matriz_confusao": [
+            [
+              48,
+              6,
+              6
+            ],
+            [
+              1,
+              53,
+              6
+            ],
+            [
+              0,
+              0,
+              30
+            ]
+          ]
+        },
+        "s1": {
+          "acuracia": 0.8533333333333334,
+          "precisao_macro": 0.8440734989648034,
+          "revocacao_macro": 0.8722222222222222,
+          "f1_macro": 0.8425085702762654,
+          "total_imagens": 150,
+          "por_classe": {
+            "Jefferson Nickels, 1938-Date": {
+              "precisao": 0.9642857142857143,
+              "revocacao": 0.9,
+              "f1": 0.9310344827586207,
+              "suporte": 60
+            },
+            "Lincoln Cents, 1909-Date": {
+              "precisao": 0.9375,
+              "revocacao": 0.75,
+              "f1": 0.8333333333333334,
+              "suporte": 60
+            },
+            "Washington Quarters, 1932-1998": {
+              "precisao": 0.6304347826086957,
+              "revocacao": 0.9666666666666667,
+              "f1": 0.763157894736842,
+              "suporte": 30
+            }
+          },
+          "classes": [
+            "Jefferson Nickels, 1938-Date",
+            "Lincoln Cents, 1909-Date",
+            "Washington Quarters, 1932-1998"
+          ],
+          "matriz_confusao": [
+            [
+              54,
+              3,
+              3
+            ],
+            [
+              1,
+              45,
+              14
+            ],
+            [
+              1,
+              0,
+              29
+            ]
+          ]
+        },
+        "s2": {
+          "acuracia": 0.8,
+          "precisao_macro": 0.7984855603903224,
+          "revocacao_macro": 0.7777777777777777,
+          "f1_macro": 0.7816382436761948,
+          "total_imagens": 150,
+          "por_classe": {
+            "Jefferson Nickels, 1938-Date": {
+              "precisao": 0.7567567567567568,
+              "revocacao": 0.9333333333333333,
+              "f1": 0.835820895522388,
+              "suporte": 60
+            },
+            "Lincoln Cents, 1909-Date": {
+              "precisao": 0.8979591836734694,
+              "revocacao": 0.7333333333333333,
+              "f1": 0.8073394495412844,
+              "suporte": 60
+            },
+            "Washington Quarters, 1932-1998": {
+              "precisao": 0.7407407407407407,
+              "revocacao": 0.6666666666666666,
+              "f1": 0.7017543859649122,
+              "suporte": 30
+            }
+          },
+          "classes": [
+            "Jefferson Nickels, 1938-Date",
+            "Lincoln Cents, 1909-Date",
+            "Washington Quarters, 1932-1998"
+          ],
+          "matriz_confusao": [
+            [
+              56,
+              4,
+              0
+            ],
+            [
+              9,
+              44,
+              7
+            ],
+            [
+              9,
+              1,
+              20
+            ]
+          ]
+        }
+      },
+      "media_individual": 0.8422222222222221,
+      "desvio_individual": 0.03790827135384881,
+      "ensemble": {
+        "acuracia": 0.9333333333333333,
+        "precisao_macro": 0.9196669835508312,
+        "revocacao_macro": 0.938888888888889,
+        "f1_macro": 0.9272103916171712,
+        "total_imagens": 150,
+        "por_classe": {
+          "Jefferson Nickels, 1938-Date": {
+            "precisao": 0.9655172413793104,
+            "revocacao": 0.9333333333333333,
+            "f1": 0.9491525423728815,
+            "suporte": 60
+          },
+          "Lincoln Cents, 1909-Date": {
+            "precisao": 0.9649122807017544,
+            "revocacao": 0.9166666666666666,
+            "f1": 0.9401709401709402,
+            "suporte": 60
+          },
+          "Washington Quarters, 1932-1998": {
+            "precisao": 0.8285714285714286,
+            "revocacao": 0.9666666666666667,
+            "f1": 0.8923076923076922,
+            "suporte": 30
+          }
+        },
+        "classes": [
+          "Jefferson Nickels, 1938-Date",
+          "Lincoln Cents, 1909-Date",
+          "Washington Quarters, 1932-1998"
+        ],
+        "matriz_confusao": [
+          [
+            56,
+            2,
+            2
+          ],
+          [
+            1,
+            55,
+            4
+          ],
+          [
+            1,
+            0,
+            29
+          ]
+        ]
+      }
+    }
+  },
+  "comparacao_pareada": {
+    "as_duas_acertam": 49,
+    "so_A_acerta": 2,
+    "so_B_acerta": 91,
+    "as_duas_erram": 8,
+    "p_mcnemar_exato": 8.829183686723235e-25
+  },
+  "por_exemplar": {
+    "J01": {
+      "fotos": 30,
+      "acertos_A": 25,
+      "acertos_B": 30,
+      "acuracia_A": 0.8333333333333334,
+      "acuracia_B": 1.0
+    },
+    "J02": {
+      "fotos": 30,
+      "acertos_A": 22,
+      "acertos_B": 26,
+      "acuracia_A": 0.7333333333333333,
+      "acuracia_B": 0.8666666666666667
+    },
+    "L01": {
+      "fotos": 30,
+      "acertos_A": 0,
+      "acertos_B": 29,
+      "acuracia_A": 0.0,
+      "acuracia_B": 0.9666666666666667
+    },
+    "L02": {
+      "fotos": 30,
+      "acertos_A": 2,
+      "acertos_B": 26,
+      "acuracia_A": 0.06666666666666667,
+      "acuracia_B": 0.8666666666666667
+    },
+    "W01": {
+      "fotos": 30,
+      "acertos_A": 2,
+      "acertos_B": 29,
+      "acuracia_A": 0.06666666666666667,
+      "acuracia_B": 0.9666666666666667
+    }
+  },
+  "por_sessao": {
+    "1": {
+      "fotos": 50,
+      "acertos_A": 17,
+      "acertos_B": 48,
+      "acuracia_A": 0.34,
+      "acuracia_B": 0.96
+    },
+    "2": {
+      "fotos": 50,
+      "acertos_A": 18,
+      "acertos_B": 45,
+      "acuracia_A": 0.36,
+      "acuracia_B": 0.9
+    },
+    "3": {
+      "fotos": 50,
+      "acertos_A": 16,
+      "acertos_B": 47,
+      "acuracia_A": 0.32,
+      "acuracia_B": 0.94
+    }
+  },
+  "por_face": {
+    "anverso": {
+      "fotos": 75,
+      "acertos_A": 20,
+      "acertos_B": 69,
+      "acuracia_A": 0.26666666666666666,
+      "acuracia_B": 0.92
+    },
+    "reverso": {
+      "fotos": 75,
+      "acertos_A": 31,
+      "acertos_B": 71,
+      "acuracia_A": 0.41333333333333333,
+      "acuracia_B": 0.9466666666666667
+    }
+  },
+  "por_acabamento": {
+    "proof": {
+      "fotos": 150,
+      "acertos_A": 51,
+      "acertos_B": 140,
+      "acuracia_A": 0.34,
+      "acuracia_B": 0.9333333333333333
+    }
+  },
+  "media_por_exemplar": {
+    "A": 0.33999999999999997,
+    "B": 0.9333333333333333,
+    "exemplares_todas_certas_A": 0,
+    "exemplares_todas_certas_B": 1
+  }
+}

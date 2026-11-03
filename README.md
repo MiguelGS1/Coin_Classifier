@@ -73,7 +73,7 @@ Coin_Classifier/
 ├── exclusoes_extra_ucoin_v2.csv            # lista de exclusões do World Coins
 ├── manifesto_extra_ucoin_limpov2.csv       # manifesto do World Coins (MD5 de cada foto)
 ├── dataset/                                # NÃO versionado (ver "Dados")
-└── artifacts/                              # só os 3 modelos da solução são versionados; resultados não
+└── artifacts/                              # versionados: os 3 modelos e os resultados da avaliação final
 ```
 
 A raiz contém apenas a solução final. Os scripts das pastas `evolucao_modelo/`, `analises/`, `auxiliares/` e
@@ -94,7 +94,7 @@ As imagens **não estão no repositório**.
 | **U.S. Coins** (3.749 imagens) | Kaggle, Sergio Saharovskiy | Baixar e colocar as três pastas de classe em `dataset/raw/` |
 | **Divisão por série** | gerada | `python make_group_split.py` → `dataset/split_series_v2/` (`treino_validacao/` com 3.234 imagens e 14 séries; `teste/` com 515 imagens e 7 séries) |
 | **World Coins** (78 imagens) | Kaggle, `wanderdust/coin-images` (imagens em sua maioria do catálogo uCoin) | `python montar_extra_ucoin_v2.py --origem <pasta do World Coins>` → `dataset/extra_ucoin_limpov2/` (detalhes em `DATASET_extra_ucoin_limpov2.md`) |
-| **Avaliação final** (150 fotos) | fotos tiradas pelos autores: 5 moedas *proof* em suportes de colecionador, iPhone 14 Pro | `dataset/teste_final/` + `fotos_teste_final.csv` + `exemplares_teste_final.csv` |
+| **Avaliação final** (150 fotos) | fotos tiradas pelos autores: 5 moedas *proof* em suportes de colecionador, iPhone 14 Pro | Fotos não versionadas; as planilhas estão em `dataset/teste_final/` e os resultados em `artifacts/experiments/avaliacao_final/` |
 
 As imagens do World Coins podem estar protegidas por direitos autorais e **não são redistribuídas**. O repositório
 contém apenas o procedimento de montagem (`montar_extra_ucoin_v2.py`, `exclusoes_extra_ucoin_v2.csv` e o manifesto),
