@@ -56,7 +56,7 @@
 ### Papel de cada conjunto
 - **Teste v2 (515 imagens):** avaliação exploratória/de desenvolvimento. Orientou as escolhas do modelo (arquitetura, aumentos de dados, número de épocas), porque a validação (mesmas séries do treino) ficou entre 98,9% e 100% e não diferenciava as alternativas.
 - **World Coins (78 imagens):** avaliação externa, sem uso para treinar ou escolher o modelo.
-- **Avaliação final:** fotos novas, coletadas depois deste congelamento, com protocolo definido antes de ver as previsões. **(pendente)**
+- **Avaliação final:** fotos novas, coletadas depois deste congelamento, com protocolo definido antes de ver as previsões. **(executada em 2026-10-23; ver o final deste arquivo)**
 
 ### Resultados registrados no momento do congelamento
 
@@ -276,3 +276,37 @@ final ser classificada.
 - **Limitação conhecida:** todas as moedas são proof e estão em suporte; o resultado vale para esse tipo de moeda e não
   deve ser generalizado para moedas de circulação.
 - O restante do protocolo (scripts, hashes, ordem dos comandos e execução única) não muda.
+
+## Execução da avaliação final (2026-10-23, 09:50)
+
+- O acréscimo com as condições de captura foi registrado no repositório às 08:48 do mesmo dia (commit `c1fb279`),
+  antes da execução.
+- Hashes conferidos antes da execução: `congelar_solucao.py --verificar` deu "OK", e os hashes de
+  `prever_moeda_recortada.py`, `avaliar_ensemble_recorte.py` e `avaliacao_final.py` conferiram.
+- `avaliacao_final.py --conferir`: pastas e planilhas conferem (150 fotos, 5 moedas).
+- Executada **uma única vez**, com `TF_ENABLE_ONEDNN_OPTS=0`, saída em `artifacts/experiments/avaliacao_final`.
+- Nenhuma foto descartada; círculo encontrado em 150 de 150 fotos (o quadrado central não foi usado).
+
+| | A (sem recorte) | B (com recorte) |
+|---|---|---|
+| Ensemble: acurácia | 34,0% | 93,3% |
+| Ensemble: F1 macro | 0,216 | 0,927 |
+| Modelos (s42 / s1 / s2) | 34,7 / 36,7 / 40,0% | 87,3 / 85,3 / 80,0% |
+| Modelos: média ± desvio | 37,1 ± 2,7% | 84,2 ± 3,8% |
+| Por moeda (J01 / J02 / L01 / L02 / W01) | 83,3 / 73,3 / 0,0 / 6,7 / 6,7% | 100 / 86,7 / 96,7 / 86,7 / 96,7% |
+| Por modalidade (normal / girada / inclinada) | 34,0 / 36,0 / 32,0% | 96,0 / 90,0 / 94,0% |
+| Por face (anverso / reverso) | 26,7 / 41,3% | 92,0 / 94,7% |
+
+Matriz do ensemble (linhas = moeda certa; colunas = resposta, na ordem Jefferson, Lincoln, Washington):
+
+| | A (sem recorte) | B (com recorte) |
+|---|---|---|
+| Jefferson (60) | 47 / 2 / 11 | 56 / 2 / 2 |
+| Lincoln (60) | 52 / 2 / 6 | 1 / 55 / 4 |
+| Washington (30) | 28 / 0 / 2 | 1 / 0 / 29 |
+
+- **Comparação foto a foto:** as duas acertam 49; só A acerta 2; só B acerta 91; as duas erram 8; McNemar exato
+  p < 0,001.
+- Conforme a regra definida antes, nenhuma configuração foi declarada vencedora antes da avaliação. Os resultados das
+  duas são apresentados lado a lado no artigo, e a discussão aponta em que condições cada uma se saiu melhor.
+- Nenhum modelo, script ou parâmetro foi alterado depois de ver estes resultados.
