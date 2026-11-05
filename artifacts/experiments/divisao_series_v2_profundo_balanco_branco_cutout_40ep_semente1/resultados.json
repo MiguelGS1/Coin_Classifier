@@ -1,0 +1,105 @@
+{
+  "validacao_series_vistas": {
+    "acuracia": 1.0,
+    "precisao_macro": 1.0,
+    "revocacao_macro": 1.0,
+    "f1_macro": 1.0,
+    "total_imagens": 646,
+    "por_classe": {
+      "Jefferson Nickels, 1938-Date": {
+        "precisao": 1.0,
+        "revocacao": 1.0,
+        "f1": 1.0,
+        "suporte": 205
+      },
+      "Lincoln Cents, 1909-Date": {
+        "precisao": 1.0,
+        "revocacao": 1.0,
+        "f1": 1.0,
+        "suporte": 221
+      },
+      "Washington Quarters, 1932-1998": {
+        "precisao": 1.0,
+        "revocacao": 1.0,
+        "f1": 1.0,
+        "suporte": 220
+      }
+    },
+    "classes": [
+      "Jefferson Nickels, 1938-Date",
+      "Lincoln Cents, 1909-Date",
+      "Washington Quarters, 1932-1998"
+    ],
+    "matriz_confusao": [
+      [
+        205,
+        0,
+        0
+      ],
+      [
+        0,
+        221,
+        0
+      ],
+      [
+        0,
+        0,
+        220
+      ]
+    ]
+  },
+  "teste_series_novas": {
+    "acuracia": 0.9145631067961165,
+    "precisao_macro": 0.9232572757361829,
+    "revocacao_macro": 0.9111838948075631,
+    "f1_macro": 0.9137764281113272,
+    "total_imagens": 515,
+    "por_classe": {
+      "Jefferson Nickels, 1938-Date": {
+        "precisao": 0.9770992366412213,
+        "revocacao": 0.847682119205298,
+        "f1": 0.9078014184397163,
+        "suporte": 151
+      },
+      "Lincoln Cents, 1909-Date": {
+        "precisao": 0.861244019138756,
+        "revocacao": 1.0,
+        "f1": 0.9254498714652957,
+        "suporte": 180
+      },
+      "Washington Quarters, 1932-1998": {
+        "precisao": 0.9314285714285714,
+        "revocacao": 0.8858695652173914,
+        "f1": 0.9080779944289694,
+        "suporte": 184
+      }
+    },
+    "classes": [
+      "Jefferson Nickels, 1938-Date",
+      "Lincoln Cents, 1909-Date",
+      "Washington Quarters, 1932-1998"
+    ],
+    "matriz_confusao": [
+      [
+        128,
+        11,
+        12
+      ],
+      [
+        0,
+        180,
+        0
+      ],
+      [
+        3,
+        18,
+        163
+      ]
+    ]
+  },
+  "epocas_executadas": 40,
+  "melhor_epoca": 40,
+  "minutos": 34.9,
+  "semente": 1,
+  "sem_parada": true
+}

@@ -1,0 +1,104 @@
+{
+  "validacao_series_vistas": {
+    "acuracia": 0.9984520123839009,
+    "precisao_macro": 0.9983818770226538,
+    "revocacao_macro": 0.9984917043740573,
+    "f1_macro": 0.9984331120931746,
+    "total_imagens": 646,
+    "por_classe": {
+      "Jefferson Nickels, 1938-Date": {
+        "precisao": 0.9951456310679612,
+        "revocacao": 1.0,
+        "f1": 0.9975669099756691,
+        "suporte": 205
+      },
+      "Lincoln Cents, 1909-Date": {
+        "precisao": 1.0,
+        "revocacao": 0.995475113122172,
+        "f1": 0.9977324263038548,
+        "suporte": 221
+      },
+      "Washington Quarters, 1932-1998": {
+        "precisao": 1.0,
+        "revocacao": 1.0,
+        "f1": 1.0,
+        "suporte": 220
+      }
+    },
+    "classes": [
+      "Jefferson Nickels, 1938-Date",
+      "Lincoln Cents, 1909-Date",
+      "Washington Quarters, 1932-1998"
+    ],
+    "matriz_confusao": [
+      [
+        205,
+        0,
+        0
+      ],
+      [
+        1,
+        220,
+        0
+      ],
+      [
+        0,
+        0,
+        220
+      ]
+    ]
+  },
+  "teste_series_novas": {
+    "acuracia": 0.920388349514563,
+    "precisao_macro": 0.9256709080393292,
+    "revocacao_macro": 0.9169743310831707,
+    "f1_macro": 0.919219930839953,
+    "total_imagens": 515,
+    "por_classe": {
+      "Jefferson Nickels, 1938-Date": {
+        "precisao": 0.9699248120300752,
+        "revocacao": 0.8543046357615894,
+        "f1": 0.9084507042253521,
+        "suporte": 151
+      },
+      "Lincoln Cents, 1909-Date": {
+        "precisao": 0.895,
+        "revocacao": 0.9944444444444445,
+        "f1": 0.9421052631578948,
+        "suporte": 180
+      },
+      "Washington Quarters, 1932-1998": {
+        "precisao": 0.9120879120879121,
+        "revocacao": 0.9021739130434783,
+        "f1": 0.907103825136612,
+        "suporte": 184
+      }
+    },
+    "classes": [
+      "Jefferson Nickels, 1938-Date",
+      "Lincoln Cents, 1909-Date",
+      "Washington Quarters, 1932-1998"
+    ],
+    "matriz_confusao": [
+      [
+        129,
+        6,
+        16
+      ],
+      [
+        1,
+        179,
+        0
+      ],
+      [
+        3,
+        15,
+        166
+      ]
+    ]
+  },
+  "epocas_executadas": 40,
+  "melhor_epoca": 40,
+  "minutos": 35.6,
+  "semente": 42
+}

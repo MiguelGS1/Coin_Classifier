@@ -73,7 +73,7 @@ Coin_Classifier/
 ├── exclusoes_extra_ucoin_v2.csv            # lista de exclusões do World Coins
 ├── manifesto_extra_ucoin_limpov2.csv       # manifesto do World Coins (MD5 de cada foto)
 ├── dataset/                                # NÃO versionado (ver "Dados")
-└── artifacts/                              # versionados: os 3 modelos e os resultados da avaliação final
+└── artifacts/                              # versionados: os 3 modelos, os registros do treino e do congelamento e os resultados da avaliação final
 ```
 
 A raiz contém apenas a solução final. Os scripts das pastas `evolucao_modelo/`, `analises/`, `auxiliares/` e
@@ -131,13 +131,9 @@ $M = "artifacts/experiments/divisao_series_v2_profundo_balanco_branco_cutout/mod
 python prever_ensemble.py --modelos $M --nomes s42 s1 s2 --imagem foto.jpg      # sem recorte
 python prever_moeda_recortada.py --imagem foto.jpg                               # com recorte (usa os 3 modelos por padrão)
 ```
-
-### Treinar um modelo da solução
+Esses scripts leem os nomes das classes das pastas de `dataset/raw/`. Sem o dataset, crie antes as três pastas vazias (o front não precisa disso):
 ```powershell
-python train_group_split_profundo_balanco_branco_cutout2.py --sem_parada --semente 1 --saida artifacts/experiments/<pasta>
-```
-O modelo s42 foi treinado com `train_group_split_profundo_balanco_branco_cutout.py`, que é idêntico ao `..._cutout2.py`,
-mas com parada antecipada. Nesse treino, a parada não interrompeu o treinamento e a melhor época foi a 40.
+New-Item -ItemType Directory -Force "dataset/raw/Jefferson Nickels, 1938-Date", "dataset/raw/Lincoln Cents, 1909-Date", "dataset/raw/Washington Quarters, 1932-1998"
 
 ### Avaliar as duas configurações
 ```powershell
@@ -228,15 +224,14 @@ SHA-256 em `PROTOCOLO_CONGELADO.md`. O mesmo arquivo descreve as regras definida
 antes da coleta das fotos novas (execução única, nenhuma foto descartada e nenhuma configuração declarada vencedora)
 e o registro da execução da avaliação final, em 23/10/2026.
 
-Para conferir se nada foi alterado:
+Para conferir se nada foi alterado, compare o SHA-256 dos arquivos com as tabelas do `PROTOCOLO_CONGELADO.md`:
 ```powershell
-python congelar_solucao.py --verificar
-Get-FileHash prever_moeda_recortada.py, avaliar_ensemble_recorte.py, avaliacao_final.py -Algorithm SHA256
+Get-FileHash config.py, dataset_loader.py, metrics.py, io_utils.py, model_builder.py, make_group_split.py, train_group_split_profundo_balanco_branco_cutout.py, train_group_split_profundo_balanco_branco_cutout2.py, avaliar_ensemble.py, prever_ensemble.py, prever_moeda_recortada.py, avaliar_ensemble_recorte.py, avaliacao_final.py, artifacts/experiments/*/modelo_divisao_series.keras -Algorithm SHA256
 ```
+O `congelar_solucao.py --verificar` faz essa conferência automaticamente, mas só no computador dos autores: ele também lê os `resultados.json` de cada treino e o registro em `artifacts/protocolo_congelado/`, que não estão no repositório.
 
 > Os hashes foram registrados e conferidos no Windows. Em Mac ou Linux, `config.py`, `dataset_loader.py`,
-> `metrics.py` e `io_utils.py` podem dar hash diferente só por causa do fim de linha (CRLF × LF), sem alteração no código.
-
+> `metrics.py`, `io_utils.py` e `model_builder.py` podem dar hash diferente só por causa do fim de linha (CRLF × LF), sem alteração no código.
 ---
 
 ## Limitações

@@ -1,0 +1,33 @@
+{
+  "Jefferson Nickels, 1938-Date": {
+    "grupos_treino_validacao": 5,
+    "grupos_teste": 3,
+    "imagens_treino_validacao": 1063,
+    "imagens_teste": 151,
+    "grupos_do_teste": [
+      "Jefferson Nickel 26505",
+      "Jefferson Nickel 212555",
+      "Jefferson Nickel 30916"
+    ]
+  },
+  "Lincoln Cents, 1909-Date": {
+    "grupos_treino_validacao": 5,
+    "grupos_teste": 2,
+    "imagens_treino_validacao": 1105,
+    "imagens_teste": 180,
+    "grupos_do_teste": [
+      "Lincoln Cent 107258",
+      "Lincoln Cent 41463"
+    ]
+  },
+  "Washington Quarters, 1932-1998": {
+    "grupos_treino_validacao": 4,
+    "grupos_teste": 2,
+    "imagens_treino_validacao": 1066,
+    "imagens_teste": 184,
+    "grupos_do_teste": [
+      "Washington Quarter 72403",
+      "Washington Quarter 17345"
+    ]
+  }
+}

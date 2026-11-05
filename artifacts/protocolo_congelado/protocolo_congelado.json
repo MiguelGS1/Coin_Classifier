@@ -1,0 +1,72 @@
+{
+  "solucao": "Ensemble de 3 CNNs (mesma arquitetura, sementes 42, 1 e 2) por soft voting",
+  "regra_ensemble": "média aritmética simples das probabilidades das 3 redes, sem pesos; classe = maior média",
+  "ordem_das_classes": [
+    "Jefferson Nickels, 1938-Date",
+    "Lincoln Cents, 1909-Date",
+    "Washington Quarters, 1932-1998"
+  ],
+  "pre_processamento": "imagem RGB redimensionada para 224x224 (bilinear, sem manter a proporção), valores 0-255 em float32 (dataset_loader.build_single_image_tensor)",
+  "pesos_salvos": "estado da última época (época 40), sem checkpoint; ver a observação de cada modelo",
+  "metricas": [
+    "acurácia",
+    "F1 macro",
+    "matriz de confusão",
+    "tempo por imagem"
+  ],
+  "modelos": {
+    "s42": {
+      "arquivo": "artifacts\\experiments\\divisao_series_v2_profundo_balanco_branco_cutout\\modelo_divisao_series.keras",
+      "sha256": "8bde3bb84849535c124b9800208398cc9f59eabb73b2e545592db7064321d332",
+      "semente": 42,
+      "sem_parada": null,
+      "epocas_executadas": 40,
+      "melhor_epoca": 40,
+      "observacao": "treinado com EarlyStopping (paciência 5, restore_best_weights), que não interrompeu o treino; a melhor época foi a 40, então os pesos salvos são os da última época, como nos demais",
+      "acuracia_teste_v2": 0.920388349514563,
+      "saidas": 3,
+      "parametros": 1601859
+    },
+    "s1": {
+      "arquivo": "artifacts\\experiments\\divisao_series_v2_profundo_balanco_branco_cutout_40ep_semente1\\modelo_divisao_series.keras",
+      "sha256": "4585cd25cb26d83f893ed6bc0881a5f1146c638bc34b9c74038dfa84f4cbc0b5",
+      "semente": 1,
+      "sem_parada": true,
+      "epocas_executadas": 40,
+      "melhor_epoca": 40,
+      "observacao": "treinado com --sem_parada (40 épocas fixas, pesos da última época)",
+      "acuracia_teste_v2": 0.9145631067961165,
+      "saidas": 3,
+      "parametros": 1601859
+    },
+    "s2": {
+      "arquivo": "artifacts\\experiments\\divisao_series_v2_profundo_balanco_branco_cutout_40ep_semente2\\modelo_divisao_series.keras",
+      "sha256": "d8bc442df93453ddef6404d6a3359cfee1b1d0303e8ae31a0f17870d93bf6a2d",
+      "semente": 2,
+      "sem_parada": true,
+      "epocas_executadas": 40,
+      "melhor_epoca": 32,
+      "observacao": "treinado com --sem_parada (40 épocas fixas, pesos da última época)",
+      "acuracia_teste_v2": 0.941747572815534,
+      "saidas": 3,
+      "parametros": 1601859
+    }
+  },
+  "scripts": {
+    "config.py": "f3daa251688d033c5158debe2872b39a553cac1e8884309488fef73a414c1e26",
+    "dataset_loader.py": "c69324c2519e760c9b0cff25ec2344d417112a286811ff47ae2241386af0cfd5",
+    "metrics.py": "fba2d89d2a1ef94dbc7c77981dbfd66090caefd735a9d75c1a5738a4d9eb0395",
+    "io_utils.py": "895c7c22df271d45437d2c4849857205eb8daffc4c7eea06ac3d210e810f2989",
+    "make_group_split.py": "35a7b9d9bac1e2df4c56933fd251626f6cc4dcd7673a3cea0285204efc5218f2",
+    "train_group_split_profundo_balanco_branco_cutout2.py": "c39d0f9f67de43b55e75c2c7b34dfb329da45fa6b5378d6691d660360c0bb6ce",
+    "avaliar_ensemble.py": "7010472418e61737503e8e25942c8abd40a504bee955af720a7363bb0f208478",
+    "prever_ensemble.py": "5ec0301b7abdb273750b249d5bf7853afc756e08bcc148ce0ba3a1c077d4e2c0"
+  },
+  "ambiente": {
+    "python": "3.14.3",
+    "tensorflow": "2.22.0-rc0",
+    "numpy": "2.4.3",
+    "sistema": "Windows 11"
+  },
+  "data": "2026-10-12 15:16"
+}
