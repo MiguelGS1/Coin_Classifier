@@ -134,6 +134,15 @@ python prever_moeda_recortada.py --imagem foto.jpg                              
 Esses scripts leem os nomes das classes das pastas de `dataset/raw/`. Sem o dataset, crie antes as três pastas vazias (o front não precisa disso):
 ```powershell
 New-Item -ItemType Directory -Force "dataset/raw/Jefferson Nickels, 1938-Date", "dataset/raw/Lincoln Cents, 1909-Date", "dataset/raw/Washington Quarters, 1932-1998"
+```
+
+### Treinar um modelo da solução
+```powershell
+python train_group_split_profundo_balanco_branco_cutout2.py --sem_parada --semente 1 --saida artifacts/experiments/<pasta>
+```
+O modelo s42 foi treinado com `train_group_split_profundo_balanco_branco_cutout.py`, que é idêntico ao `..._cutout2.py`,
+mas com parada antecipada. Nesse treino, a parada não interrompeu o treinamento e a melhor época foi a 40.
+
 
 ### Avaliar as duas configurações
 ```powershell
@@ -224,14 +233,19 @@ SHA-256 em `PROTOCOLO_CONGELADO.md`. O mesmo arquivo descreve as regras definida
 antes da coleta das fotos novas (execução única, nenhuma foto descartada e nenhuma configuração declarada vencedora)
 e o registro da execução da avaliação final, em 23/10/2026.
 
-Para conferir se nada foi alterado, compare o SHA-256 dos arquivos com as tabelas do `PROTOCOLO_CONGELADO.md`:
+Para conferir se nada foi alterado (no Windows, a partir da raiz do projeto):
 ```powershell
-Get-FileHash config.py, dataset_loader.py, metrics.py, io_utils.py, model_builder.py, make_group_split.py, train_group_split_profundo_balanco_branco_cutout.py, train_group_split_profundo_balanco_branco_cutout2.py, avaliar_ensemble.py, prever_ensemble.py, prever_moeda_recortada.py, avaliar_ensemble_recorte.py, avaliacao_final.py, artifacts/experiments/*/modelo_divisao_series.keras -Algorithm SHA256
+New-Item -ItemType Directory -Force "dataset/raw/Jefferson Nickels, 1938-Date", "dataset/raw/Lincoln Cents, 1909-Date", "dataset/raw/Washington Quarters, 1932-1998"
+python congelar_solucao.py --verificar
+Get-FileHash prever_moeda_recortada.py, avaliar_ensemble_recorte.py, avaliacao_final.py, model_builder.py -Algorithm SHA256
 ```
-O `congelar_solucao.py --verificar` faz essa conferência automaticamente, mas só no computador dos autores: ele também lê os `resultados.json` de cada treino e o registro em `artifacts/protocolo_congelado/`, que não estão no repositório.
+O primeiro comando só é necessário sem o dataset. O `--verificar` compara os três modelos e os oito scripts com o registro em
+`artifacts/protocolo_congelado/`; em outro computador, o aviso de que o ambiente mudou é esperado. O `Get-FileHash` mostra os
+hashes dos scripts registrados à parte, que podem ser comparados com as tabelas do `PROTOCOLO_CONGELADO.md`.
 
 > Os hashes foram registrados e conferidos no Windows. Em Mac ou Linux, `config.py`, `dataset_loader.py`,
 > `metrics.py`, `io_utils.py` e `model_builder.py` podem dar hash diferente só por causa do fim de linha (CRLF × LF), sem alteração no código.
+
 ---
 
 ## Limitações
